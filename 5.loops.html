@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلقه‌ها در پایتون</title>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس پنجم: حلقه‌ها در پایتون</h1>
+        <p>سلام بچه‌ها! امروز قراره درباره <strong>حلقه‌ها</strong> تو پایتون صحبت کنیم. حلقه‌ها به ما کمک می‌کنن یه کار رو چند بار تکرار کنیم بدون اینکه کد رو بارها بنویسیم.</p>
+
+        <h2>حلقه چیه؟</h2>
+        <p>
+            - حلقه‌ها مثل یه چرخ و فلک تو برنامه‌نویسی‌ان! یه بخش کد رو تا وقتی یه شرط خاص برقراره، تکرار می‌کنن.<br>
+            - تو پایتون، دو نوع حلقه اصلی داریم: <code>for</code> و <code>while</code>.
+        </p>
+
+        <h2>حلقه <code>for</code></h2>
+        <p>
+            - وقتی می‌دونیم یه کار باید چند بار تکرار بشه، از <code>for</code> استفاده می‌کنیم.<br>
+            - معمولاً با <code>range()</code> یا لیست‌ها کار می‌کنه.
+        </p>
+        <p class="highlight">مثال: چاپ اعداد ۱ تا ۵:</p>
+        <pre><code>for i in range(1, 6):
+    print(i)
+</code></pre>
+        <p>خروجی: <code>1 2 3 4 5</code></p>
+
+        <h2>حلقه <code>while</code></h2>
+        <p>
+            - وقتی نمی‌دونیم دقیقاً چند بار قراره یه کار تکرار بشه، ولی یه شرط داریم، از <code>while</code> استفاده می‌کنیم.<br>
+            - تا وقتی شرط درست باشه، حلقه ادامه پیدا می‌کنه.
+        </p>
+        <p class="highlight">مثال: چاپ اعداد تا وقتی کاربر ۰ وارد کنه:</p>
+        <pre><code>num = int(input("یه عدد وارد کن (۰ برای خروج): "))
+while num != 0:
+    print("عدد:", num)
+    num = int(input("یه عدد دیگه وارد کن (۰ برای خروج): "))
+</code></pre>
+
+        <h2>کنترل حلقه‌ها</h2>
+        <ul>
+            <li><strong><code>break</code></strong>: حلقه رو کامل متوقف می‌کنه.</li>
+            <li><strong><code>continue</code></strong>: بقیه کدهای این دور حلقه رو رد می‌کنه و می‌ره دور بعدی.</li>
+        </ul>
+        <p class="highlight">مثال با <code>break</code> و <code>continue</code>:</p>
+        <pre><code>for i in range(1, 6):
+    if i == 3:
+        continue  # عدد ۳ رو رد می‌کنه
+    if i == 5:
+        break    # حلقه تو ۵ تموم می‌شه
+    print(i)
+</code></pre>
+        <p>خروجی: <code>1 2 4</code></p>
+
+        <h2>نکات مهم:</h2>
+        <ul>
+            <li>تورفتگی (۴ فاصله یا یه تب) تو حلقه‌ها خیلی مهمه!</li>
+            <li>حواستون باشه حلقه <code>while</code> اگه شرطش همیشه درست باشه، ممکنه بی‌نهایت اجرا بشه (حلقه بی‌نهایت).</li>
+            <li>برای کار با لیست‌ها، <code>for</code> خیلی کاربردیه، مثلاً: <code>for item in ["سیب", "موز"]:</code></li>
+        </ul>
+
+        <h2>مثال پیشرفته‌تر:</h2>
+        <p class="highlight">برنامه‌ای که جمع اعداد ۱ تا ۱۰ رو حساب می‌کنه:</p>
+        <pre><code>total = 0
+for i in range(1, 11):
+    total += i
+print("جمع اعداد ۱ تا ۱۰:", total)
+</code></pre>
+        <p>خروجی: <code>جمع اعداد ۱ تا ۱۰: ۵۵</code></p>
+
+        <h2>جمع‌بندی:</h2>
+        <p>حلقه‌ها به ما کمک می‌کنن کارهای تکراری رو راحت‌تر انجام بدیم. <code>for</code> برای تعداد مشخص و <code>while</code> برای شرط‌های خاص عالی‌ان. با تمرین، می‌تونید برنامه‌های پیچیده‌تری بنویسید!</p>
+    </div>
+</body>
+</html>

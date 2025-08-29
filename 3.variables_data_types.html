@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متغیرها و انواع داده در پایتون</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس سوم: متغیرها و انواع داده در پایتون</h1>
+        
+        <h2>متغیر چیه؟</h2>
+        <p>
+            - متغیر مثل یه جعبه‌ست که می‌تونید اطلاعات (مثل عدد، متن یا چیزای دیگه) رو توش ذخیره کنید.<br>
+            - تو پایتون، برای ساخت متغیر فقط یه اسم انتخاب می‌کنید و باهاش یه مقدار رو ذخیره می‌کنید. نیازی به تعریف نوعش نیست!<br>
+            - مثلاً: <code>x = 5</code> یعنی یه متغیر به اسم <code>x</code> ساختیم که مقدارش ۵ه.
+        </p>
+
+        <h2>انواع داده در پایتون</h2>
+        <p>داده‌ها تو پایتون چند نوع اصلی دارن:</p>
+        <ul>
+            <li><strong>عدد صحیح (int)</strong>: اعداد بدون اعشار، مثل <code>10</code> یا <code>-3</code>.</li>
+            <li><strong>عدد اعشاری (float)</strong>: اعداد با اعشار، مثل <code>3.14</code> یا <code>-0.5</code>.</li>
+            <li><strong>رشته (str)</strong>: متن‌ها، مثل <code>"سلام"</code> یا <code>"Python"</code>. همیشه تو نقل‌قول‌ها ("") نوشته می‌شن.</li>
+            <li><strong>بولین (bool)</strong>: فقط دو مقدار داره: <code>True</code> (درست) یا <code>False</code> (غلط).</li>
+            <li><strong>لیست (list)</strong>: مجموعه‌ای از داده‌ها، مثل <code>[1, 2, 3]</code> یا <code>["سیب", "موز"]</code>.</li>
+        </ul>
+
+        <h2>مثال ساده:</h2>
+        <p class="highlight">بیاید یه برنامه بنویسیم که اسم و سن یه نفر رو بگیره و یه پیام نشون بده:</p>
+        <pre><code>name = input("اسمت چیه؟ ")
+age = int(input("چند سالته؟ "))
+print("سلام", name, "تو", age, "ساله هستی!")
+</code></pre>
+        <p>تو این کد، <code>name</code> یه رشته‌ست، <code>age</code> یه عدد صحیح و خروجی یه پیام خوشامدگوییه.</p>
+
+        <h2>نکات مهم:</h2>
+        <ul>
+            <li>اسم متغیر باید معنی‌دار باشه (مثل <code>age</code> به جای <code>a</code>).</li>
+            <li>پایتون به حروف بزرگ و کوچک حساسه (<code>Name</code> با <code>name</code> فرق داره).</li>
+            <li>می‌تونید نوع داده یه متغیر رو با تابع <code>type()</code> چک کنید، مثلاً <code>print(type(5))</code> می‌گه <code>&lt;class 'int'&gt;</code>.</li>
+        </ul>
+
+        <h2>جمع‌بندی:</h2>
+        <p>متغیرها و انواع داده ابزارهای اصلی برنامه‌نویسی تو پایتون هستن. با این‌ها می‌تونید اطلاعات رو ذخیره و مدیریت کنید و برنامه‌های جذاب بنویسید!</p>
+
+    </div>
+</body>
+</html>
