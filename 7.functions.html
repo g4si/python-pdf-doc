@@ -1,0 +1,86 @@
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توابع در پایتون</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس هفتم: توابع در پایتون</h1>
+        <h2>تابع چیه؟</h2>
+        <p>
+            - تابع یه بلوک کدِ که یه کار خاص رو انجام می‌ده و هر وقت لازمش داشتید می‌تونید صداش کنید.<br>
+            - تو پایتون با کلمه <code>def</code> تعریف می‌شه و می‌تونه ورودی بگیره، کاری انجام بده و خروجی بده.<br>
+            - مثلاً: یه تابع برای گفتن "سلام" به یه نفر.
+        </p>
+
+        <h2>چطور تابع بسازیم؟</h2>
+        <p>ساختار کلی یه تابع:</p>
+        <pre><code>def function_name(پارامترها):
+    # کدهایی که تابع انجام می‌ده
+    return خروجی  # اختیاری
+</code></pre>
+        <p>
+            - <code>def</code>: شروع تعریف تابع.<br>
+            - <code>پارامترها</code>: ورودی‌هایی که تابع می‌گیره (اختیاری).<br>
+            - <code>return</code>: مقداری که تابع برمی‌گردونه (اختیاری).
+        </p>
+
+        <h2>مثال ساده:</h2>
+        <p class="highlight">بیاید یه تابع بسازیم که به کاربر سلام کنه:</p>
+        <pre><code>def say_hello(name):
+    message = "سلام " + name + "!"
+    return message
+
+# صدا زدن تابع
+print(say_hello("علی"))
+</code></pre>
+        <p>خروجی: <code>سلام علی!</code></p>
+
+        <h2>انواع تابع</h2>
+        <ul>
+            <li><strong>بدون پارامتر</strong>: مثل <code>def greet(): print("hello!")</code></li>
+            <li><strong>با پارامتر</strong>: مثل مثال بالا که <code>name</code> پارامتره.</li>
+            <li><strong>با مقدار پیش‌فرض</strong>: می‌تونید برای پارامترها مقدار پیش‌فرض بذارید.</li>
+            <li><strong>با بازگشت</strong>: با <code>return</code> مقدار برمی‌گردونه.</li>
+        </ul>
+
+        <h2>مثال با پارامتر پیش‌فرض:</h2>
+        <p class="highlight">تابعی که جمع دو عدد رو حساب می‌کنه:</p>
+        <pre><code>def add_numbers(a, b=0):
+    return a + b
+
+print(add_numbers(5, 3))  # خروجی: 8
+print(add_numbers(5))     # خروجی: 5 (چون b=0)
+</code></pre>
+
+        <h2>نکات مهم:</h2>
+        <ul>
+            <li>اسم تابع باید معنی‌دار باشه، مثل <code>calculate_average</code>.</li>
+            <li>تورفتگی داخل تابع (۴ فاصله) خیلی مهمه!</li>
+            <li>با <code>return</code> می‌تونید نتیجه رو به برنامه اصلی برگردونید، وگرنه تابع <code>None</code> برمی‌گردونه.</li>
+            <li>توابع باعث می‌شن کدتون تمیزتر و قابل استفاده مجدد باشه.</li>
+        </ul>
+
+        <h2>مثال پیشرفته‌تر:</h2>
+        <p class="highlight">تابعی که میانگین یه لیست از نمره‌ها رو حساب می‌کنه:</p>
+        <pre><code>def calculate_average(scores):
+    total = 0
+    for score in scores:
+        total += score
+    average = total / len(scores)
+    return average
+
+# صدا زدن تابع
+grades = [85, 90, 78, 92]
+print("میانگین نمره‌ها:", calculate_average(grades))
+</code></pre>
+        <p>خروجی: <code>میانگین نمره‌ها: 86.25</code></p>
+
+        <h2>جمع‌بندی:</h2>
+        <p>توابع ابزارهایی هستن که کد رو منظم‌تر و قابل استفاده مجدد می‌کنن. با توابع می‌تونید برنامه‌های پیچیده‌تری بنویسید و کارها رو ساده‌تر کنید!</p>
+    </div>
+</body>
+</html>
