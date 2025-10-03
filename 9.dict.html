@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دیکشنری‌ها در پایتون</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس نهم: دیکشنری‌ها در پایتون</h1>
+        <h2>دیکشنری چیه؟</h2>
+        <p>
+            - دیکشنری یه نوع داده تو پایتونه که داده‌ها رو به صورت جفت <strong>کلید:مقدار</strong> ذخیره می‌کنه.<br>
+            - با آکولاد <code>{}</code> ساخته می‌شه و هر کلید به یه مقدار وصل می‌شه.<br>
+            - مثلاً: <code>student = {"name": "علی", "age": 15}</code>
+        </p>
+
+        <h2>ویژگی‌های دیکشنری</h2>
+        <ul>
+            <li><strong>تغییرپذیر</strong>: می‌تونید مقادیر رو تغییر بدید یا جفت‌های جدید اضافه کنید.</li>
+            <li><strong>کلید منحصربه‌فرد</strong>: هر کلید تو دیکشنری فقط یه بار می‌تونه وجود داشته باشه.</li>
+            <li><strong>دسترسی سریع</strong>: با کلید می‌تونید به مقدارش سریع دسترسی پیدا کنید، بدون نیاز به اندیس.</li>
+        </ul>
+
+        <h2>کار با دیکشنری‌ها</h2>
+        <p>چند عملیات مهم با دیکشنری‌ها:</p>
+        <ul>
+            <li>دسترسی به مقدار: با کلید، مثلاً <code>student["name"]</code> می‌گه <code>"علی"</code>.</li>
+            <li>اضافه کردن: با <code>dict[key] = value</code> یه جفت جدید اضافه می‌شه.</li>
+            <li>حذف: با <code>pop(key)</code> یا <code>del</code> یه جفت کلید:مقدار رو حذف می‌کنید.</li>
+            <li>طول دیکشنری: با <code>len()</code> تعداد جفت‌ها رو می‌فهمید.</li>
+        </ul>
+
+        <h2>مثال ساده:</h2>
+        <p class="highlight">بیاید یه دیکشنری برای اطلاعات دانش‌آموز بسازیم و باهاش کار کنیم:</p>
+        <pre><code>student = {"name": "علی", "age": 15, "grade": 18.5}
+print("نام:", student["name"])
+student["school"] = "مدرسه نمونه"  # اضافه کردن
+print("بعد از اضافه کردن مدرسه:", student)
+student.pop("age")  # حذف کردن
+print("بعد از حذف سن:", student)
+print("تعداد جفت‌ها:", len(student))
+</code></pre>
+        <p>خروجی:</p>
+        <pre><code>نام: علی
+بعد از اضافه کردن مدرسه: {'name': 'علی', 'age': 15, 'grade': 18.5, 'school': 'مدرسه نمونه'}
+بعد از حذف سن: {'name': 'علی', 'grade': 18.5, 'school': 'مدرسه نمونه'}
+تعداد جفت‌ها: 3
+</code></pre>
+
+        <h2>دیکشنری و حلقه‌ها</h2>
+        <p>می‌تونید با حلقه <code>for</code> روی کلیدها، مقادیر یا جفت‌های دیکشنری بچرخید:</p>
+        <p class="highlight">مثال: چاپ همه جفت‌های دیکشنری:</p>
+        <pre><code>student = {"name": "علی", "age": 15, "grade": 18.5}
+for key, value in student.items():
+    print(f"{key}: {value}")
+</code></pre>
+        <p>خروجی:</p>
+        <pre><code>name: علی
+age: 15
+grade: 18.5
+</code></pre>
+
+        <h2>نکات مهم:</h2>
+        <ul>
+            <li>کلیدها باید غیرقابل تغییر باشن (مثل رشته یا عدد)، ولی مقادیر می‌تونن هر چیزی باشن (حتی لیست یا دیکشنری دیگه).</li>
+            <li>برای چک کردن وجود کلید از <code>in</code> استفاده کنید، مثلاً <code>"name" in student</code>.</li>
+            <li>با متد <code>get()</code> می‌تونید مقدار کلید رو بگیرید و اگه وجود نداشت، مقدار پیش‌فرض بدید: <code>student.get("name", "ناشناس")</code>.</li>
+        </ul>
+
+        <h2>مثال پیشرفته‌تر:</h2>
+        <p class="highlight">برنامه‌ای که نمره‌های دانش‌آموزا رو تو دیکشنری ذخیره کنه و میانگینشون رو حساب کنه:</p>
+        <pre><code>grades = {"علی": 18, "مریم": 19, "رضا": 15}
+total = 0
+for grade in grades.values():
+    total += grade
+average = total / len(grades)
+print("میانگین نمره‌ها:", average)
+</code></pre>
+        <p>خروجی: <code>میانگین نمره‌ها: 17.333333333333332</code></p>
+
+        <h2>جمع‌بندی:</h2>
+        <p>دیکشنری‌ها ابزار قدرتمندی برای ذخیره و مدیریت داده‌ها به صورت کلید:مقدار هستن. با دیکشنری‌ها می‌تونید برنامه‌های منظم‌تر و کاربردی‌تری بنویسید!</p>
+    </div>
+</body>
+</html>
