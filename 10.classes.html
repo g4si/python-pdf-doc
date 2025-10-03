@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کلاس‌ها در پایتون</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس نهم: کلاس‌ها در پایتون</h1>
+        <h2>کلاس چیه؟</h2>
+        <p>
+            - کلاس یه راه برای تعریف یه نوع داده جدیده که شامل داده‌ها (ویژگی‌ها) و توابع (متدها) مربوط به اونه.<br>
+            - مثل یه نقشه برای ساختن یه ماشین: کلاس مشخص می‌کنه ماشین چه ویژگی‌هایی (مثل رنگ) و چه کارهایی (مثل حرکت) داره.<br>
+            - با کلمه <code>class</code> تعریف می‌شه.
+        </p>
+
+        <h2>چطور کلاس بسازیم؟</h2>
+        <p>ساختار کلی یه کلاس:</p>
+        <pre><code>class Name:
+    def __init__(self, parameters):
+        # ویژگی‌ها (attributes)
+        self.parameter = parameter
+    
+    def method(self):
+        # کارهایی که کلاس می‌تونه انجام بده
+        pass
+</code></pre>
+        <p>
+            - <code>__init__</code>: متد سازنده‌ست که وقتی یه شیء از کلاس ساخته می‌شه، اجرا می‌شه.<br>
+            - <code>self</code>: به خود شیء اشاره داره و برای دسترسی به ویژگی‌ها و متدها استفاده می‌شه.
+        </p>
+
+        <h2>مثال ساده:</h2>
+        <p class="highlight">بیاید یه کلاس برای دانش‌آموز بسازیم:</p>
+        <pre><code>class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def introduce(self):
+        return f"من {self.name} هستم و {self.age} سالمه!"
+
+# ساختن شیء از کلاس
+student1 = Student("علی", 15)
+print(student1.introduce())
+</code></pre>
+        <p>خروجی: <code>من علی هستم و 15 سالمه!</code></p>
+
+        <h2>ویژگی‌ها و متدها</h2>
+        <ul>
+            <li><strong>ویژگی‌ها (Attributes)</strong>: داده‌های مربوط به شیء، مثل <code>name</code> و <code>age</code>.</li>
+            <li><strong>متدها (Methods)</strong>: توابعی که کار خاصی برای شیء انجام می‌دن، مثل <code>introduce</code>.</li>
+        </ul>
+
+        <h2>مثال پیشرفته‌تر:</h2>
+        <p class="highlight">کلاسی که نمره‌های دانش‌آموز رو مدیریت می‌کنه:</p>
+        <pre><code>class Student:
+    def __init__(self, name, grades):
+        self.name = name
+        self.grades = grades
+    
+    def calculate_average(self):
+        total = sum(self.grades)
+        return total / len(self.grades)
+    
+    def passed(self):
+        return self.calculate_average() >= 10
+
+# ساختن شیء
+student1 = Student("مریم", [18, 15, 19])
+print(f"نام: {student1.name}")
+print(f"میانگین: {student1.calculate_average()}")
+print(f"قبول شده؟ {'بله' if student1.passed() else 'خیر'}")
+</code></pre>
+        <p>خروجی:</p>
+        <pre><code>نام: مریم
+میانگین: 17.333333333333332
+قبول شده؟ بله
+</code></pre>
+
+        <h2>نکات مهم:</h2>
+        <ul>
+            <li>هر شیء یه نمونه (instance) از کلاسه و ویژگی‌های خودش رو داره.</li>
+            <li>می‌تونید چند شیء از یه کلاس بسازید، مثلاً <code>student2 = Student("رضا", 16)</code>.</li>
+            <li>کلاس‌ها برای برنامه‌نویسی شیءگرا (OOP) استفاده می‌شن که باعث می‌شه کد منظم‌تر و قابل استفاده مجدد باشه.</li>
+            <li>تورفتگی داخل کلاس (۴ فاصله) خیلی مهمه!</li>
+        </ul>
+
+        <h2>جمع‌بندی:</h2>
+        <p>کلاس‌ها به ما اجازه می‌دن اشیاء با ویژگی‌ها و رفتارهای مشخص بسازیم. با کلاس‌ها می‌تونید برنامه‌های پیچیده‌تر و سازمان‌یافته‌تر بنویسید، مثل یه سیستم مدیریت دانش‌آموز!</p>
+
+    </div>
+</body>
+</html>
