@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ارث‌بری کلاس‌ها در پایتون</title>
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس یازدهم: ارث‌بری کلاس‌ها در پایتون</h1>
+
+        <h2>ارث‌بری چیه؟</h2>
+        <p>
+            - ارث‌بری به یه کلاس (فرزند) اجازه می‌ده ویژگی‌ها و متدهای یه کلاس دیگه (والد) رو به ارث ببره.<br>
+            - این کار باعث می‌شه کد تکراری کمتر بنویسید و برنامه‌تون منظم‌تر بشه.<br>
+            - کلاس فرزند می‌تونه متدها و ویژگی‌های جدید اضافه کنه یا متدهای والد رو تغییر بده.
+        </p>
+
+        <h2>چطور ارث‌بری تعریف کنیم؟</h2>
+        <p>برای ارث‌بری، کلاس فرزند رو با اشاره به کلاس والد تعریف می‌کنیم:</p>
+        <pre><code>class Parent:
+    def __init__(self):
+        # ویژگی‌ها و متدها
+        pass
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()  # فراخوانی سازنده والد
+        # ویژگی‌ها و متدهای جدید
+        pass
+</code></pre>
+        <p>
+            - <code>Parent</code>: کلاس والده.<br>
+            - <code>Child(Parent)</code>: کلاس فرزند که از والد ارث می‌بره.<br>
+            - <code>super()</code>: برای دسترسی به متدهای والد استفاده می‌شه.
+        </p>
+
+        <h2>مثال ساده:</h2>
+        <p class="highlight">بیاید یه کلاس والد برای حیوانات و یه کلاس فرزند برای سگ بسازیم:</p>
+        <pre><code>class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return f"{self.name} صدایی تولید می‌کنه!"
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} می‌گه ووف!"
+
+# ساختن شیء
+dog = Dog("رکس")
+print(dog.speak())
+</code></pre>
+        <p>خروجی: <code>رکس می‌گه ووف!</code></p>
+        <p>تو این مثال، <code>Dog</code> از <code>Animal</code> ارث می‌بره و متد <code>speak</code> رو تغییر می‌ده.</p>
+
+        <h2>ویژگی‌های ارث‌بری</h2>
+        <ul>
+            <li><strong>بازنویسی (Override)</strong>: کلاس فرزند می‌تونه متدهای والد رو تغییر بده.</li>
+            <li><strong>گسترش</strong>: می‌تونید ویژگی‌ها و متدهای جدید به کلاس فرزند اضافه کنید.</li>
+            <li><strong>دسترسی به والد</strong>: با <code>super()</code> می‌تونید متدهای والد رو فراخوانی کنید.</li>
+        </ul>
+
+        <h2>مثال پیشرفته‌تر:</h2>
+        <p class="highlight">کلاسی برای دانش‌آموز و یه کلاس فرزند برای دانش‌آموز ممتاز:</p>
+        <pre><code>class Student:
+    def __init__(self, name, grades):
+        self.name = name
+        self.grades = grades
+    
+    def calculate_average(self):
+        return sum(self.grades) / len(self.grades)
+
+class HonorStudent(Student):
+    def __init__(self, name, grades, award):
+        super().__init__(name, grades)
+        self.award = award
+    
+    def introduce(self):
+        return f"من {self.name} هستم، میانگین نمره‌ام {self.calculate_average()} و جایزه‌ام {self.award} است!"
+
+# ساختن شیء
+honor_student = HonorStudent("مریم", [18, 19, 20], "مدال طلا")
+print(honor_student.introduce())
+</code></pre>
+        <p>خروجی: <code>من مریم هستم، میانگین نمره‌ام 19.0 و جایزه‌ام مدال طلا است!</code></p>
+
+        <h2>نکات مهم:</h2>
+        <ul>
+            <li>تورفتگی (۴ فاصله) تو تعریف کلاس‌ها و متدها خیلی مهمه!</li>
+            <li>کلاس فرزند همه ویژگی‌ها و متدهای والد رو به ارث می‌بره، مگر اینکه بازنویسی بشن.</li>
+            <li>ارث‌بری چندگانه هم تو پایتون ممکنه، مثلاً <code>class Child(Parent1, Parent2)</code>.</li>
+            <li>ارث‌بری برای برنامه‌نویسی شیءگرا (OOP) خیلی کاربردیه و کد رو قابل استفاده مجدد می‌کنه.</li>
+        </ul>
+
+        <h2>جمع‌بندی:</h2>
+        <p>ارث‌بری به ما کمک می‌کنه کلاس‌های جدید رو بر اساس کلاس‌های موجود بسازیم و کد رو منظم‌تر و قابل گسترش کنیم. با ارث‌بری می‌تونید برنامه‌های پیچیده‌تری مثل سیستم‌های مدیریت یا بازی‌ها بنویسید!</p>
+
+    </div>
+</body>
+</html>
