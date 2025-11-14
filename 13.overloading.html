@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overloading در پایتون (بارگذاری مجدد عملگرها)</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس سیزدهم: Overloading در پایتون (بارگذاری مجدد عملگرها)</h1>
+        <p>
+            <strong>Overloading</strong> یا <strong>بارگذاری مجدد عملگرها</strong> — یعنی به عملگرهای معمولی مثل <code>+</code>، <code>-</code>، <code>></code>، <code>==</code> و ... معنی جدید بدیم!</p>
+
+        <h2>Overloading یعنی چی؟</h2>
+        <p>
+            - وقتی می‌گیم یه عملگر رو Overload کردیم، یعنی بهش گفتیم وقتی روی اشیاء کلاس ما استفاده بشه، یه رفتار خاص و دلخواه داشته باشه.<br>
+            - مثلاً می‌تونیم بگیم وقتی دو شیء از کلاس <code>Vector</code> رو با <code>+</code> جمع کردیم، اجزاهاشون جمع بشن!
+        </p>
+
+        <h2>چرا از Overloading استفاده می‌کنیم؟</h2>
+        <ul>
+            <li>کد خواناتر و طبیعی‌تر می‌شه</li>
+            <li>مثل ریاضیات واقعی می‌نویسیم: <code>v1 + v2</code> به جای <code>v1.add(v2)</code></li>
+            <li>کار با کلاس‌های خودمون مثل کار با عدد و رشته می‌شه!</li>
+        </ul>
+
+        <h2>مهم‌ترین متدهای Overloading</h2>
+        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+            <tr><th style="background:#3498db; color:white; padding:10px;">عملگر</th><th style="background:#3498db; color:white; padding:10px;">متد جادویی</th></tr>
+            <tr><td><code>+</code></td><td><code>__add__(self, other)</code></td></tr>
+            <tr><td><code>-</code></td><td><code>__sub__(self, other)</code></td></tr>
+            <tr><td><code>*</code></td><td><code>__mul__(self, other)</code></td></tr>
+            <tr><td><code>/</code></td><td><code>__truediv__(self, other)</code></td></tr>
+            <tr><td><code>></code></td><td><code>__gt__(self, other)</code></td></tr>
+            <tr><td><code>==</code></td><td><code>__eq__(self, other)</code></td></tr>
+            <tr><td><code>str()</code></td><td><code>__str__(self)</code></td></tr>
+            <tr><td><code>len()</code></td><td><code>__len__(self)</code></td></tr>
+        </table>
+
+        <h2>مثال کاربردی: جمع دو بردار (Vector)</h2>
+        <p class="highlight">بیاید یه کلاس بردار بسازیم که بتونیم با + جمعش کنیم:</p>
+        <pre><code>class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+    
+    def __str__(self):
+        return f"Vector({self.x}, {self.y})"
+
+# استفاده از کلاس
+v1 = Vector(2, 3)
+v2 = Vector(5, 7)
+v3 = v1 + v2  # Overloading کار کرد!
+
+print(v3)  # خروجی: Vector(7, 10)
+</code></pre>
+
+        <h2>مثال جذاب: مقایسه دانش‌آموزان بر اساس نمره</h2>
+        <p class="highlight">بیاید بگیم وقتی دو دانش‌آموز رو با > مقایسه کردیم، اون که نمره بالاتری داره بزرگتر باشه!</p>
+        <pre><code>class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+    
+    def __gt__(self, other):
+        return self.grade > other.grade
+    
+    def __str__(self):
+        return f"{self.name} (نمره: {self.grade})"
+
+# استفاده
+s1 = Student("علی", 18)
+s2 = Student("مریم", 19.5)
+
+if s1 > s2:
+    print(f"{s1.name} نمره بهتری داره")
+else:
+    print(f"{s2.name} نمره بهتری داره")
+# خروجی: مریم نمره بهتری داره
+</code></pre>
+
+        <h2>مثال دیگه: استفاده از len() روی کلاس خودمون</h2>
+        <pre><code>class Basket:
+    def __init__(self, fruits):
+        self.fruits = fruits
+    
+    def __len__(self):
+        return len(self.fruits)
+
+basket = Basket(["سیب", "موز", "پرتقال"])
+print("تعداد میوه‌ها:", len(basket))  # خروجی: 3
+</code></pre>
+
+        <h2>نکات مهم</h2>
+        <ul>
+            <li>این متدها به اسم <strong>متدهای جادویی (Magic Methods)</strong> یا <strong>Dunder Methods</strong> شناخته می‌شن (چون با دو آندرلاین شروع و تموم می‌شن).</li>
+            <li>فقط وقتی نیاز داری، ازشون استفاده کن — زیاده‌روی نکن!</li>
+            <li>همیشه <code>__str__</code> و <code>__repr__</code> رو برای چاپ بهتر شیءها تعریف کن.</li>
+        </ul>
+
+        <h2>جمع‌بندی</h2>
+        <p>
+            Overloading یکی از قدرتمندترین و زیباترین قابلیت‌های پایتونه که به شما اجازه می‌ده کلاس‌هاتون مثل انواع داده داخلی (عدد، رشته، لیست) رفتار کنن.  
+            با Overloading، کد شما نه تنها کار می‌کنه — بلکه <strong>زیبا و حرفه‌ای</strong> هم به نظر می‌رسه!
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توابع lambda در پایتون</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="./index.html">بازگشت به فهرست مطالب</a></div>
+        <h1>درس چهاردهم: توابع lambda در پایتون</h1>
+        <p>  
+            <strong>تابع lambda</strong> — یعنی تابع بدون اسم!</p>
+
+        <h2>تابع lambda چیه؟</h2>
+        <p>
+            - lambda یه راه سریع برای ساختن تابع‌های کوچیک و یک‌خطی هست.<br>
+            - به جای اینکه با <code>def</code> یه تابع کامل بنویسیم، با کلمه <code>lambda</code> یه تابع موقت می‌سازیم.<br>
+            - معمولاً وقتی استفاده می‌شه که یه تابع ساده فقط یک بار نیاز داریم (مثلاً داخل <code>sorted</code> یا <code>map</code>).
+        </p>
+
+        <h2>ساختار تابع lambda</h2>
+        <pre><code>lambda ورودی‌ها : خروجی
+</code></pre>
+        <p>مثال:</p>
+        <pre><code># تابع معمولی
+def square(x):
+    return x * x
+
+# همون تابع با lambda
+square_lambda = lambda x: x * x
+
+print(square(5))         # خروجی: 25
+print(square_lambda(5))  # خروجی: 25
+</code></pre>
+
+        <h2>کاربردهای اصلی lambda</h2>
+
+        <h3>1. استفاده با sorted() — مرتب‌سازی سفارشی</h3>
+        <p class="highlight">مرتب کردن لیست دانش‌آموزان بر اساس نمره:</p>
+        <pre><code>students = [("علی", 17), ("مریم", 19.5), ("رضا", 15), ("سارا", 18)]
+
+# مرتب کردن بر اساس نمره (عنصر دوم هر تاپل)
+sorted_students = sorted(students, key=lambda student: student[1])
+
+print(sorted_students)
+# خروجی: [('رضا', 15), ('علی', 17), ('سارا', 18), ('مریم', 19.5)]
+</code></pre>
+
+        <h3>2. استفاده با map() — اعمال تابع روی همه اعضای لیست</h3>
+        <p class="highlight">دو برابر کردن همه اعداد یه لیست:</p>
+        <pre><code>numbers = [1, 2, 3, 4, 5]
+
+doubled = list(map(lambda x: x * 2, numbers))
+print(doubled)  # خروجی: [2, 4, 6, 8, 10]
+</code></pre>
+
+        <h3>3. استفاده با filter() — فیلتر کردن اعضای لیست</h3>
+        <p class="highlight">انتخاب فقط اعداد زوج:</p>
+        <pre><code>numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)  # خروجی: [2, 4, 6, 8]
+</code></pre>
+
+        <h3>4. lambda با چند ورودی</h3>
+        <pre><code># جمع دو عدد
+add = lambda x, y: x + y
+print(add(5, 3))  # خروجی: 8
+
+# بررسی اینکه آیا اسم با "ا" شروع می‌شه؟
+starts_with_a = lambda name: name.startswith("ا")
+print(starts_with_a("احمد"))   # True
+print(starts_with_a("رضا"))    # False
+</code></pre>
+
+        <h2>مزایای تابع lambda</h2>
+        <ul>
+            <li>کد کوتاه‌تر و تمیزتر می‌شه</li>
+            <li>برای توابع ساده و یک‌بار مصرف عالیه</li>
+            <li>همراه با توابع <code>map</code>، <code>filter</code>، <code>sorted</code> خیلی قدرتمنده</li>
+        </ul>
+
+        <h2>معایب و نکات مهم</h2>
+        <ul>
+            <li>فقط یک عبارت (expression) می‌تونه داشته باشه — دستورات مثل <code>print</code> یا <code>if</code> چندخطی نمی‌تونه باشه</li>
+            <li>برای توابع پیچیده بهتره از <code>def</code> استفاده کنید (خواناتری داره)</li>
+            <li>زیاده‌روی نکنید! گاهی تابع معمولی بهتر و قابل‌فهم‌تره</li>
+        </ul>
+
+        <h2>جمع‌بندی</h2>
+        <p>
+            تابع <code>lambda</code> مثل یه ابزار جادویی کوچیکه که وقتی نیاز به یه تابع ساده و سریع دارید، به کمکتون میاد.  
+            مخصوصاً تو مرتب‌سازی، فیلتر کردن و تبدیل داده‌ها، استفاده از <code>lambda</code> کد شما رو حرفه‌ای و کوتاه‌تر می‌کنه!
+        </p>
+    </div>
+</body>
+</html>
